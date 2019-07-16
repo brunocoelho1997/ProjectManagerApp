@@ -1,3 +1,4 @@
+using ProjectManagerApp2.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace ProjectManagerApp2
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
         }
     }
 }
