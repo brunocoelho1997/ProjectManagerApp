@@ -1,4 +1,6 @@
-﻿using ProjectManagerApp2.Context;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ProjectManagerApp2.Context;
 using ProjectManagerApp2.Controllers.ProjectController.Converter;
 using ProjectManagerApp2.Controllers.TaskController.Converter;
 using ProjectManagerApp2.Models;
@@ -11,7 +13,7 @@ using System.Web.Http;
 
 namespace ProjectManagerApp2.Controllers
 {
-    public class ProjectsController : ApiController
+    public class ProjectsController : BaseController
     {
 
         //Creating Instance of DatabaseContext class  
@@ -60,10 +62,11 @@ namespace ProjectManagerApp2.Controllers
                                               TaskId = task.TaskId,
                                               Name = task.Name,
                                               Description = task.Description,
-                                              State = task.State
+                                              State = task.State,
+                                              DateLimit = task.DateLimit
+                                              
                                           }).ToList()
                                }).ToList();
-
                 return Ok(projects);
             }
             catch (Exception)
@@ -73,10 +76,27 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
+        [HttpPost]
+        public IHttpActionResult addProject(JObject jsonResult)
+        {
+            try
+            {
+                ProjectDTO item = JsonConvert.DeserializeObject<ProjectDTO>(jsonResult.ToString());
 
-        
+                db.Projects.Add(ProjectDTOFactory.projectDTOToProject(item));
+                db.SaveChanges();
 
-        
+                return Ok(jsonResult);
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return throwErrorMessage("error message");
+            }
+        }
+
+
+
 
     }
 }

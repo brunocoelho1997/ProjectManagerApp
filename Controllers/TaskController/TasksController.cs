@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace ProjectManagerApp2.Controllers
 {
-    public class TasksController : ApiController
+    public class TasksController : BaseController
     {
         //Creating Instance of DatabaseContext class  
         private DatabaseContext db = new DatabaseContext();
@@ -113,12 +113,5 @@ namespace ProjectManagerApp2.Controllers
                 return throwErrorMessage("Error Message");
             }
         }
-
-
-        private IHttpActionResult throwErrorMessage(string v)
-        {
-            return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.InternalServerError, v));
-        }
-
     }
 }

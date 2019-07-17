@@ -28,15 +28,14 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
             taskDTO.State = task.State;
             return taskDTO;
         }
+
         public static List<TaskDTO> getTasksDTOList(List<Task> listOfTask)
         {
             List<TaskDTO> taskDTOs = new List<TaskDTO>();
-
-            taskDTOs.Add(new TaskDTO());
-            /*
+            
             foreach (Task task in listOfTask)
                 taskDTOs.Add(taskToTaskDTO(task));
-            */
+            
 
             return taskDTOs;
         }

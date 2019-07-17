@@ -93,6 +93,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\DatabaseInitializer.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ProjectController\Converter\ProjectDTOFactory.cs" />
     <Compile Include="Controllers\ProjectController\ProjectsController.cs" />
     <Compile Include="Controllers\TaskController\Converter\TaskDTOFactory.cs" />
