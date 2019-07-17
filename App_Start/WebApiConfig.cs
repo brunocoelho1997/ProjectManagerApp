@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.WebHost;
 
 namespace ProjectManagerApp2
 {
@@ -11,7 +13,6 @@ namespace ProjectManagerApp2
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -20,6 +21,7 @@ namespace ProjectManagerApp2
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
 
             //By default Web API return XML data  
             //We can remove this by clearing the SupportedMediaTypes option as follows  

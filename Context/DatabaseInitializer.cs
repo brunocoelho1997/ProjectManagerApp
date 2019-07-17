@@ -28,6 +28,21 @@ namespace ProjectManagerApp2.Context
             project.Tasks = listOfTasks;
 
             context.Projects.Add(project);
+            /*
+            var listOfRoles = new List<Role> {
+                new Role {Name="ProjectManager"},
+                new Role {Name="Developer"}
+            };
+
+            context.Roles.AddRange(listOfRoles);
+
+            var listOfUsers = new List<User> {
+                new User {Username = "projectmanager", Password = "123", Role=listOfRoles[0]},
+                new User {Username = "dev", Password = "123", Role=listOfRoles[1]}
+            };
+
+            context.Users.AddRange(listOfUsers);
+            */
             context.SaveChanges();
 
         }

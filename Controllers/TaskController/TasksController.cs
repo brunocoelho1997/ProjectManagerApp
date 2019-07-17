@@ -16,6 +16,7 @@ namespace ProjectManagerApp2.Controllers
     {
 
         //Creating a method to return Json data   
+        //[Authorize]
         [HttpGet]
         public IHttpActionResult findAll()
         {

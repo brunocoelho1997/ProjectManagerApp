@@ -16,9 +16,6 @@ namespace ProjectManagerApp2.Controllers
     public class ProjectsController : BaseController
     {
 
-        //Creating Instance of DatabaseContext class  
-        private DatabaseContext db = new DatabaseContext();
-       
         //Creating a method to return Json data   
         [HttpGet]
         public IHttpActionResult findAll()
