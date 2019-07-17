@@ -22,6 +22,8 @@ namespace ProjectManagerApp2.Models
 
         public Boolean State{ get; set; }
 
+        public Project project { get; set; }
+
         public override string ToString()
         {
             return "ID: " + this.TaskId + "; Name: " + this.Name + " ; Description: " + Description + "; Date Limit " + this.DateLimit;

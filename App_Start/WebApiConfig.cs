@@ -32,6 +32,7 @@ namespace ProjectManagerApp2
             //For converting data in Camel Case  
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
+
         }
     }
 }

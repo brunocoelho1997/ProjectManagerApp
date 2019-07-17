@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectManagerApp2.Context;
+using ProjectManagerApp2.Controllers.TaskController.Converter;
 using ProjectManagerApp2.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace ProjectManagerApp2.Controllers
             try
             {
                 //Prepare data to be returned using Linq as follows  
-                var result = from task in db.Tasks
+                var result = from task in db.Tasks 
                              select new TaskDTO
                              {
                                  TaskId = task.TaskId,
@@ -49,7 +50,7 @@ namespace ProjectManagerApp2.Controllers
             {
                 TaskDTO item = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
 
-                db.Tasks.Add(taskDtoToTask(item));
+                db.Tasks.Add(TaskDTOFactory.taskDTOToTask(item));
                 db.SaveChanges();
 
                 return Ok(jsonResult);
@@ -113,17 +114,6 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
-
-
-        public static Task taskDtoToTask(TaskDTO taskDTO)
-        {
-            Task task = new Task();
-            task.Name = taskDTO.Name;
-            task.Description = taskDTO.Description;
-            task.DateLimit = taskDTO.DateLimit;
-            task.State = taskDTO.State;
-            return task;
-        }
 
         private IHttpActionResult throwErrorMessage(string v)
         {
