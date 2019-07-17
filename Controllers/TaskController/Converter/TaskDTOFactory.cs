@@ -32,12 +32,21 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
         public static List<TaskDTO> getTasksDTOList(List<Task> listOfTask)
         {
             List<TaskDTO> taskDTOs = new List<TaskDTO>();
-            
+
             foreach (Task task in listOfTask)
                 taskDTOs.Add(taskToTaskDTO(task));
-            
 
             return taskDTOs;
         }
+        public static List<Task> getTasksList(List<TaskDTO> listOfTask)
+        {
+            List<Task> tasks = new List<Task>();
+
+            foreach (TaskDTO taskDTO in listOfTask)
+                tasks.Add(taskDTOToTask(taskDTO));
+
+            return tasks;
+        }
+
     }
 }
