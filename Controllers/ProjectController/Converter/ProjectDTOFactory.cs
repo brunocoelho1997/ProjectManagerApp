@@ -27,9 +27,7 @@ namespace ProjectManagerApp2.Controllers.ProjectController.Converter
             project.Name = projectDTO.Name;
             project.Budget = projectDTO.Budget;
             project.Tasks = TaskDTOFactory.getTasksList(projectDTO.TasksDTO);
-
             return project;
-
         }
     }
 }

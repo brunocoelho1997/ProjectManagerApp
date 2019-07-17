@@ -14,8 +14,6 @@ namespace ProjectManagerApp2.Controllers
 {
     public class TasksController : BaseController
     {
-        //Creating Instance of DatabaseContext class  
-        private DatabaseContext db = new DatabaseContext();
 
         //Creating a method to return Json data   
         [HttpGet]
@@ -30,6 +28,32 @@ namespace ProjectManagerApp2.Controllers
                                  TaskId = task.TaskId,
                                  Name = task.Name,
                                  Description= task.Description,
+                                 State = task.State,
+                                 DateLimit = task.DateLimit
+                             };
+
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return InternalServerError();
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult findById(int taskId)
+        {
+            try
+            {
+                //Prepare data to be returned using Linq as follows  
+                var result = from task in db.Tasks
+                             where task.TaskId == taskId
+                             select new TaskDTO
+                             {
+                                 TaskId = task.TaskId,
+                                 Name = task.Name,
+                                 Description = task.Description,
                                  State = task.State,
                                  DateLimit = task.DateLimit
                              };

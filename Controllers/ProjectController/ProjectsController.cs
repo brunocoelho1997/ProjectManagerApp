@@ -95,8 +95,22 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
+        [HttpDelete]
+        public IHttpActionResult removeTask(int taskId)
+        {
+            try
+            {
+                Task task = db.Tasks.Find(taskId);
+                db.Tasks.Remove(task);
+                db.SaveChanges();
 
-
-
+                return Ok();
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return throwErrorMessage("Error Message");
+            }
+        }
     }
 }
