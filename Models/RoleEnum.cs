@@ -5,5 +5,5 @@ using System.Web;
 
 namespace ProjectManagerApp2.Models
 {
-    enum RoleEnum { ProjectManager, Developer};
+    enum RoleEnum { Admin, ProjectManager, Developer};
 }

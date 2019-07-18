@@ -23,7 +23,7 @@ namespace ProjectManagerApp2.Migrations
             //  This method will be called after migrating to the latest version.
 
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DatabaseContext()));
-            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DatabaseContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DatabaseContext()));
 
 
             /*
@@ -31,14 +31,14 @@ namespace ProjectManagerApp2.Migrations
              * ADD ROLES
              * 
              */
-            string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString() };
+            string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString(), RoleEnum.Admin.ToString() };
             foreach (var roleName in roles)
             {
                 IdentityResult roleResult;
                 // Check to see if Role Exists, if not create it
-                if (!RoleManager.RoleExists(roleName))
+                if (!roleManager.RoleExists(roleName))
                 {
-                    roleResult = RoleManager.Create(new IdentityRole(roleName));
+                    roleResult = roleManager.Create(new IdentityRole(roleName));
                 }
             }
 
@@ -57,6 +57,15 @@ namespace ProjectManagerApp2.Migrations
                 FullName = "Developer User"
             };
 
+            var adminUser = new ApplicationUser()
+            {
+                UserName = "admin",
+                Email = "admin@mymail.com",
+                EmailConfirmed = true,
+                FullName = "Admin User"
+            };
+
+
             userManager.Create(projectManagerUser, "1234567890");
             var currentUser = userManager.FindByName(projectManagerUser.UserName);
             userManager.AddToRole(currentUser.Id, RoleEnum.ProjectManager.ToString());
@@ -65,6 +74,10 @@ namespace ProjectManagerApp2.Migrations
             currentUser = userManager.FindByName(developerUser.UserName);
             userManager.AddToRole(currentUser.Id, RoleEnum.Developer.ToString());
 
+            userManager.Create(adminUser, "1234567890");
+            currentUser = userManager.FindByName(adminUser.UserName);
+            //userManager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" })
+            userManager.AddToRole(currentUser.Id, RoleEnum.Admin.ToString());
 
             /*
              * 

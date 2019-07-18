@@ -13,14 +13,14 @@ namespace ProjectManagerApp2.Controllers.AccountsController
     [RoutePrefix("api/accounts")]
     public class AccountsController : BaseController
     {
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("users")]
         public IHttpActionResult GetUsers()
         {
-            return Ok(this.AppUserManager.Users.ToList().Select(u => this.TheModelFactory.Create(u)));
+            return Ok(this.AppUserManager.Users.ToList().Select(u => this.UserDTOFactory.Create(u)));
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("user/{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string Id)
         {
@@ -28,14 +28,14 @@ namespace ProjectManagerApp2.Controllers.AccountsController
 
             if (user != null)
             {
-                return Ok(this.TheModelFactory.Create(user));
+                return Ok(this.UserDTOFactory.Create(user));
             }
 
             return NotFound();
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("user/{username}")]
         public async Task<IHttpActionResult> GetUserByName(string username)
         {
@@ -43,13 +43,12 @@ namespace ProjectManagerApp2.Controllers.AccountsController
 
             if (user != null)
             {
-                return Ok(this.TheModelFactory.Create(user));
+                return Ok(this.UserDTOFactory.Create(user));
             }
 
             return NotFound();
 
         }
-
 
         [AllowAnonymous]
         [Route("create")]
@@ -76,7 +75,7 @@ namespace ProjectManagerApp2.Controllers.AccountsController
 
             Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
-            return Created(locationHeader, TheModelFactory.Create(user));
+            return Created(locationHeader, UserDTOFactory.Create(user));
         }
     }
 }

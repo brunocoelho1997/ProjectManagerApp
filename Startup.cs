@@ -7,6 +7,7 @@ using Newtonsoft.Json.Serialization;
 using Owin;
 using ProjectManagerApp2.Context;
 using ProjectManagerApp2.Controllers.ApplicationUserController;
+using ProjectManagerApp2.Models;
 using ProjectManagerApp2.Providers;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,7 @@ namespace ProjectManagerApp2
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(DatabaseContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
@@ -56,6 +58,8 @@ namespace ProjectManagerApp2
 
             // OAuth 2.0 Bearer Access Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
+
+
         }
 
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)

@@ -153,6 +153,12 @@
     <Compile Include="Controllers\AccountsController\Converter\UserDTOFactory.cs" />
     <Compile Include="Controllers\AccountsController\DTO\CreateUserDTO.cs" />
     <Compile Include="Controllers\AccountsController\DTO\UserDTO.cs" />
+    <Compile Include="Controllers\RolesController\Converter\RoleDTOFactory.cs" />
+    <Compile Include="Controllers\RolesController\DTO\CreateRoleBindingDTO.cs" />
+    <Compile Include="Controllers\RolesController\DTO\RoleReturnDTO.cs" />
+    <Compile Include="Controllers\RolesController\DTO\UsersInRoleDTO.cs" />
+    <Compile Include="Controllers\RolesController\RolesController.cs" />
+    <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ProjectController\Converter\ProjectDTOFactory.cs" />
