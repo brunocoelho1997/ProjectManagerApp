@@ -22,6 +22,7 @@ namespace ProjectManagerApp2
                 defaults: new { id = RouteParameter.Optional }
             );
             
+            /* //since was defined in startup ....
 
             //By default Web API return XML data  
             //We can remove this by clearing the SupportedMediaTypes option as follows  
@@ -34,7 +35,7 @@ namespace ProjectManagerApp2
             //For converting data in Camel Case  
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
-
+                */
         }
     }
 }

@@ -81,3 +81,13 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.S
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.InitialCreate.resources
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csproj.GenerateResource.cache
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.InitialCreate1.resources
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Cors.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Http.Owin.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Cors.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Http.Owin.xml
