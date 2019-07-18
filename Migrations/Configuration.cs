@@ -84,9 +84,10 @@ namespace ProjectManagerApp2.Migrations
              * ADD PROJECTS AND TASKS
              * 
              */
+            developerUser = userManager.FindByName(developerUser.UserName);
 
             var listOfTasks = new List<Task> {
-                new Task {Name="Dehradun", DateLimit=DateTime.Now },
+                new Task {Name="Dehradun", DateLimit=DateTime.Now},
                 new Task {Name="Rishikesh", Description="Olá Mundo", DateLimit=DateTime.Now}
             };
             

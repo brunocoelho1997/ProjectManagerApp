@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectManagerApp2.Context;
 using ProjectManagerApp2.Controllers.TaskController.Converter;
@@ -12,14 +13,18 @@ using System.Web.Http;
 
 namespace ProjectManagerApp2.Controllers
 {
+    [Authorize]
     public class TasksController : BaseController
     {
 
-        //Creating a method to return Json data   
-        //[Authorize]
+        //Creating a method to return Json data
         [HttpGet]
         public IHttpActionResult findAll()
         {
+
+            //RequestContext.Principal.Identity.Name; //get actual user which called the method
+
+            
             try
             {
                 //Prepare data to be returned using Linq as follows  
@@ -68,6 +73,7 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
+        [Authorize(Roles = "ProjectManager")]
         [HttpPost]
         public IHttpActionResult addTask(JObject jsonResult)
         {
@@ -86,7 +92,7 @@ namespace ProjectManagerApp2.Controllers
                 return throwErrorMessage("error message");
             }
         }
-
+        [Authorize(Roles = "ProjectManager")]
         [HttpPut]
         public IHttpActionResult editTask(JObject jsonResult)
         {
@@ -121,6 +127,7 @@ namespace ProjectManagerApp2.Controllers
             return false;
         }
 
+        [Authorize(Roles = "ProjectManager")]
         [HttpDelete]
         public IHttpActionResult removeTask(int taskId)
         {
@@ -131,6 +138,41 @@ namespace ProjectManagerApp2.Controllers
                 db.SaveChanges();
 
                 return Ok();
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return throwErrorMessage("Error Message");
+            }
+        }
+
+        [Authorize(Roles = "Developer")]
+        [HttpPut]
+        public IHttpActionResult setTaskAsDone(JObject jsonResult)
+        {
+            try
+            {
+
+                //RequestContext.Principal.Identity.Name; //get actual user which called the method
+
+
+                TaskDTO taskDTO = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
+
+                if (taskDTO.TaskId == 0 || taskDTO.State == null)
+                    return NotFound();
+                
+
+                var task = db.Tasks.Find(taskDTO.TaskId);
+
+                if(task == null)
+                    return NotFound();
+
+                //if(task.) //TODO: verify if the task belongs to the user which defined as done
+
+                task.State = taskDTO.State;
+                db.SaveChanges();
+
+                return Ok(TaskDTOFactory.taskToTaskDTO(task));
             }
             catch (Exception)
             {
