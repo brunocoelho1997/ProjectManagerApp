@@ -13,13 +13,14 @@ namespace ProjectManagerApp2.Controllers.AccountsController
     [RoutePrefix("api/accounts")]
     public class AccountsController : BaseController
     {
-
+        [Authorize]
         [Route("users")]
         public IHttpActionResult GetUsers()
         {
             return Ok(this.AppUserManager.Users.ToList().Select(u => this.TheModelFactory.Create(u)));
         }
 
+        [Authorize]
         [Route("user/{id:guid}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string Id)
         {
@@ -34,6 +35,7 @@ namespace ProjectManagerApp2.Controllers.AccountsController
 
         }
 
+        [Authorize]
         [Route("user/{username}")]
         public async Task<IHttpActionResult> GetUserByName(string username)
         {
@@ -49,6 +51,7 @@ namespace ProjectManagerApp2.Controllers.AccountsController
         }
 
 
+        [AllowAnonymous]
         [Route("create")]
         public async Task<IHttpActionResult> CreateUser(CreateUserDTO createUserModel)
         {

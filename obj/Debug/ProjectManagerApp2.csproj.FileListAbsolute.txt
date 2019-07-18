@@ -91,3 +91,16 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.C
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Http.Owin.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Thinktecture.IdentityModel.Core.dll
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Thinktecture.IdentityModel.Core.pdb
