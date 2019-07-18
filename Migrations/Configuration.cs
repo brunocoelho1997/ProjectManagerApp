@@ -22,57 +22,68 @@ namespace ProjectManagerApp2.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DatabaseContext()));
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DatabaseContext()));
 
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DatabaseContext()));
 
-            var user = new ApplicationUser()
+            /*
+             * 
+             * ADD ROLES
+             * 
+             */
+            string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString() };
+            foreach (var roleName in roles)
             {
-                UserName = "SuperPowerUser",
-                Email = "taiseer.joudeh@mymail.com",
+                IdentityResult roleResult;
+                // Check to see if Role Exists, if not create it
+                if (!RoleManager.RoleExists(roleName))
+                {
+                    roleResult = RoleManager.Create(new IdentityRole(roleName));
+                }
+            }
+
+            var projectManagerUser = new ApplicationUser()
+            {
+                UserName = "projectmanager",
+                Email = "projectmanager@mymail.com",
                 EmailConfirmed = true,
-                FullName = "Taiseer Ola"
+                FullName = "Project Manager"
+            };
+            var developerUser = new ApplicationUser()
+            {
+                UserName = "developer",
+                Email = "developer@mymail.com",
+                EmailConfirmed = true,
+                FullName = "Developer User"
             };
 
-            manager.Create(user, "123");
+            userManager.Create(projectManagerUser, "1234567890");
+            var currentUser = userManager.FindByName(projectManagerUser.UserName);
+            userManager.AddToRole(currentUser.Id, RoleEnum.ProjectManager.ToString());
+            
+            userManager.Create(developerUser, "1234567890");
+            currentUser = userManager.FindByName(developerUser.UserName);
+            userManager.AddToRole(currentUser.Id, RoleEnum.Developer.ToString());
 
 
             /*
              * 
              * ADD PROJECTS AND TASKS
+             * 
              */
 
             var listOfTasks = new List<Task> {
                 new Task {Name="Dehradun", DateLimit=DateTime.Now },
                 new Task {Name="Rishikesh", Description="Olá Mundo", DateLimit=DateTime.Now}
             };
-            /*
-            System.Diagnostics.Debug.WriteLine("\n\n\n\n LIST OF TASKS:");
-            foreach(Task task in listOfTasks)
-                System.Diagnostics.Debug.WriteLine("\n" + task.ToString());
-            */
+            
             Project project = new Project();
             project.Name = "ProjectA";
             project.Budget = 200000;
             project.Tasks = listOfTasks;
 
             context.Projects.Add(project);
-            /*
-            var listOfRoles = new List<Role> {
-                new Role {Name="ProjectManager"},
-                new Role {Name="Developer"}
-            };
-
-            context.Roles.AddRange(listOfRoles);
-
-            var listOfUsers = new List<User> {
-                new User {Username = "projectmanager", Password = "123", Role=listOfRoles[0]},
-                new User {Username = "dev", Password = "123", Role=listOfRoles[1]}
-            };
-
-            context.Users.AddRange(listOfUsers);
-            */
+            
             context.SaveChanges();
 
         }
