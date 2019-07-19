@@ -8,15 +8,6 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
 {
     public class TaskDTOFactory
     {
-        public static Task taskDTOToTask(TaskDTO taskDTO)
-        {
-            Task task = new Task();
-            task.Name = taskDTO.Name;
-            task.Description = taskDTO.Description;
-            task.DateLimit = taskDTO.DateLimit;
-            task.State = taskDTO.State;
-            return task;
-        }
 
         public static TaskDTO taskToTaskDTO(Task task)
         {
@@ -26,6 +17,8 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
             taskDTO.Description = task.Description;
             taskDTO.DateLimit = task.DateLimit;
             taskDTO.State = task.State;
+            taskDTO.ApplicationUserId = task.applicationUser.Id;
+            taskDTO.ProjectId = task.project.ProjectId;
             return taskDTO;
         }
 
@@ -38,15 +31,6 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
 
             return taskDTOs;
         }
-        public static List<Task> getTasksList(List<TaskDTO> listOfTask)
-        {
-            List<Task> tasks = new List<Task>();
-
-            foreach (TaskDTO taskDTO in listOfTask)
-                tasks.Add(taskDTOToTask(taskDTO));
-
-            return tasks;
-        }
-
+       
     }
 }

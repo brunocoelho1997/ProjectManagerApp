@@ -14,6 +14,9 @@ namespace ProjectManagerApp2.Models
         public DateTime DateLimit { get; set; }
 
         public Boolean State { get; set; }
+        public int ProjectId { get; set; }
+        public string ApplicationUserId { get; set; }
+
 
         public override string ToString()
         {

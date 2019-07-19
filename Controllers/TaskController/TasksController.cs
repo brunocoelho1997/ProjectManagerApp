@@ -37,7 +37,8 @@ namespace ProjectManagerApp2.Controllers
                                  Name = task.Name,
                                  Description= task.Description,
                                  State = task.State,
-                                 DateLimit = task.DateLimit
+                                 DateLimit = task.DateLimit,
+                                 ProjectId = task.project.ProjectId
                              };
 
                 return Ok(result);
@@ -63,7 +64,8 @@ namespace ProjectManagerApp2.Controllers
                                  Name = task.Name,
                                  Description = task.Description,
                                  State = task.State,
-                                 DateLimit = task.DateLimit
+                                 DateLimit = task.DateLimit,
+                                 ProjectId = task.project.ProjectId
                              };
 
                 return Ok(result);
@@ -86,7 +88,15 @@ namespace ProjectManagerApp2.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var task = TaskDTOFactory.taskDTOToTask(taskDTO);
+                var task = new Models.Task
+                {
+                    Name = taskDTO.Name,
+                    Description = taskDTO.Description,
+                    DateLimit = taskDTO.DateLimit,
+                    State = taskDTO.State,
+                    project = this.db.Projects.Find(taskDTO.ProjectId),
+                    applicationUser = this.AppUserManager.FindById(taskDTO.ApplicationUserId)
+                };
 
                 db.Tasks.Add(task);
 

@@ -67,37 +67,37 @@ namespace ProjectManagerApp2.Migrations
 
 
             userManager.Create(projectManagerUser, "1234567890");
-            var currentUser = userManager.FindByName(projectManagerUser.UserName);
-            userManager.AddToRole(currentUser.Id, RoleEnum.ProjectManager.ToString());
+            var projectManagerEntity = userManager.FindByName(projectManagerUser.UserName);
+            userManager.AddToRole(projectManagerEntity.Id, RoleEnum.ProjectManager.ToString());
             
             userManager.Create(developerUser, "1234567890");
-            currentUser = userManager.FindByName(developerUser.UserName);
-            userManager.AddToRole(currentUser.Id, RoleEnum.Developer.ToString());
+            var developerEntity = userManager.FindByName(developerUser.UserName);
+            userManager.AddToRole(developerEntity.Id, RoleEnum.Developer.ToString());
 
             userManager.Create(adminUser, "1234567890");
-            currentUser = userManager.FindByName(adminUser.UserName);
+            var adminEntity = userManager.FindByName(adminUser.UserName);
             //userManager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" })
-            userManager.AddToRole(currentUser.Id, RoleEnum.Admin.ToString());
+            userManager.AddToRole(adminEntity.Id, RoleEnum.Admin.ToString());
 
             /*
              * 
              * ADD PROJECTS AND TASKS
              * 
              */
-            developerUser = userManager.FindByName(developerUser.UserName);
-
+            
             var listOfTasks = new List<Task> {
                 new Task {Name="Dehradun", DateLimit=DateTime.Now},
                 new Task {Name="Rishikesh", Description="Olá Mundo", DateLimit=DateTime.Now}
             };
-            
+
             Project project = new Project();
             project.Name = "ProjectA";
             project.Budget = 200000;
             project.Tasks = listOfTasks;
 
-            context.Projects.Add(project);
-            
+            var projectEntity = context.Projects.Add(project);
+
+
             context.SaveChanges();
 
         }

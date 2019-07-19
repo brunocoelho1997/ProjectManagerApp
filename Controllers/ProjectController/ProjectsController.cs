@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ProjectManagerApp2.Controllers
@@ -18,7 +19,7 @@ namespace ProjectManagerApp2.Controllers
 
         //Creating a method to return Json data   
         [HttpGet]
-        public IHttpActionResult findAll()
+        public IHttpActionResult FindAll()
         {
             try
             {
@@ -73,40 +74,27 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
+        [Authorize(Roles = "Developer")]
         [HttpPost]
-        public IHttpActionResult addProject(JObject jsonResult)
+        public async Task<IHttpActionResult> AddProject(ProjectDTO item)
         {
             try
             {
-                ProjectDTO item = JsonConvert.DeserializeObject<ProjectDTO>(jsonResult.ToString());
+                //ProjectDTO item = JsonConvert.DeserializeObject<ProjectDTO>(jsonResult.ToString());
 
-                db.Projects.Add(ProjectDTOFactory.projectDTOToProject(item));
-                db.SaveChanges();
+                /*
+                var project = db.Projects.Add(ProjectDTOFactory.projectDTOToProject(item));
+    */            
+    db.SaveChanges();
 
-                return Ok(jsonResult);
-            }
-            catch (Exception)
-            {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return throwErrorMessage("error message");
-            }
-        }
-
-        [HttpDelete]
-        public IHttpActionResult removeTask(int taskId)
-        {
-            try
-            {
-                Task task = db.Tasks.Find(taskId);
-                db.Tasks.Remove(task);
-                db.SaveChanges();
+                //return Ok(ProjectDTOFactory.projectToProjectDTO(project));
 
                 return Ok();
             }
             catch (Exception)
             {
                 //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return throwErrorMessage("Error Message");
+                return throwErrorMessage("error message");
             }
         }
     }

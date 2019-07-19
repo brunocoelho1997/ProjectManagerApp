@@ -20,14 +20,5 @@ namespace ProjectManagerApp2.Controllers.ProjectController.Converter
             return projectDTO;
         }
 
-        public static Project projectDTOToProject(ProjectDTO projectDTO)
-        {
-            Project project = new Project();
-            project.ProjectId = projectDTO.ProjectId;
-            project.Name = projectDTO.Name;
-            project.Budget = projectDTO.Budget;
-            project.Tasks = TaskDTOFactory.getTasksList(projectDTO.TasksDTO);
-            return project;
-        }
     }
 }

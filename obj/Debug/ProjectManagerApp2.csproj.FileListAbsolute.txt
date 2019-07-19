@@ -117,3 +117,4 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Razor
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.WebPages.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csprojAssemblyReference.cache
