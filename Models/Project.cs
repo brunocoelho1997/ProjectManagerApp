@@ -18,5 +18,8 @@ namespace ProjectManagerApp2.Models
 
         public List<Task> Tasks { get; set; }
 
+        public ProjectManagerEntity ProjectManagerEntity { get; set; }
+
+
     }
 }

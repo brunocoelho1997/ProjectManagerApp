@@ -24,7 +24,7 @@ namespace ProjectManagerApp2.Models
 
         public Project project { get; set; }
 
-        public ApplicationUser applicationUser { get; set; }
+        public DeveloperEntity DeveloperEntity{ get; set; }
 
         public override string ToString()
         {

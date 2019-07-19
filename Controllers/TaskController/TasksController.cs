@@ -95,7 +95,7 @@ namespace ProjectManagerApp2.Controllers
                     DateLimit = taskDTO.DateLimit,
                     State = taskDTO.State,
                     project = this.db.Projects.Find(taskDTO.ProjectId),
-                    applicationUser = this.AppUserManager.FindById(taskDTO.ApplicationUserId)
+                    DeveloperEntity = (DeveloperEntity) this.AppUserManager.FindById(taskDTO.ApplicationUserId)
                 };
 
                 db.Tasks.Add(task);

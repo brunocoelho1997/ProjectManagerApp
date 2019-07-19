@@ -26,30 +26,15 @@ namespace ProjectManagerApp2.Migrations
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DatabaseContext()));
 
 
-            /*
-             * 
-             * ADD ROLES
-             * 
-             */
-            string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString(), RoleEnum.Admin.ToString() };
-            foreach (var roleName in roles)
-            {
-                IdentityResult roleResult;
-                // Check to see if Role Exists, if not create it
-                if (!roleManager.RoleExists(roleName))
-                {
-                    roleResult = roleManager.Create(new IdentityRole(roleName));
-                }
-            }
-
-            var projectManagerUser = new ApplicationUser()
+            var projectManagerUser = new ProjectManagerEntity()
             {
                 UserName = "projectmanager",
                 Email = "projectmanager@mymail.com",
                 EmailConfirmed = true,
                 FullName = "Project Manager"
             };
-            var developerUser = new ApplicationUser()
+
+            var developerUser = new DeveloperEntity()
             {
                 UserName = "developer",
                 Email = "developer@mymail.com",
@@ -65,38 +50,46 @@ namespace ProjectManagerApp2.Migrations
                 FullName = "Admin User"
             };
 
-
-            userManager.Create(projectManagerUser, "1234567890");
-            var projectManagerEntity = userManager.FindByName(projectManagerUser.UserName);
-            userManager.AddToRole(projectManagerEntity.Id, RoleEnum.ProjectManager.ToString());
-            
-            userManager.Create(developerUser, "1234567890");
-            var developerEntity = userManager.FindByName(developerUser.UserName);
-            userManager.AddToRole(developerEntity.Id, RoleEnum.Developer.ToString());
-
-            userManager.Create(adminUser, "1234567890");
-            var adminEntity = userManager.FindByName(adminUser.UserName);
-            //userManager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" })
-            userManager.AddToRole(adminEntity.Id, RoleEnum.Admin.ToString());
-
-            /*
-             * 
-             * ADD PROJECTS AND TASKS
-             * 
-             */
-            
             var listOfTasks = new List<Task> {
-                new Task {Name="Dehradun", DateLimit=DateTime.Now},
-                new Task {Name="Rishikesh", Description="Olá Mundo", DateLimit=DateTime.Now}
+                new Task {Name="Dehradun", DateLimit=DateTime.Now, DeveloperEntity = developerUser},
+                new Task {Name="Rishikesh", Description="Olá Mundo", DateLimit=DateTime.Now, DeveloperEntity = developerUser}
             };
 
-            Project project = new Project();
-            project.Name = "ProjectA";
-            project.Budget = 200000;
-            project.Tasks = listOfTasks;
 
-            var projectEntity = context.Projects.Add(project);
+            Project project = new Project()
+            {
+                Name = "ProjectA",
+                Budget = 200000,
+                Tasks = listOfTasks,
+                ProjectManagerEntity = projectManagerUser
+            };
 
+            context.Projects.Add(project);
+            
+            context.SaveChanges();
+
+
+            string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString(), RoleEnum.Admin.ToString() };
+            foreach (var roleName in roles)
+            {
+                IdentityResult roleResult;
+                // Check to see if Role Exists, if not create it
+                if (!roleManager.RoleExists(roleName))
+                {
+                    roleResult = roleManager.Create(new IdentityRole(roleName));
+                }
+            }
+
+            var currentUser = userManager.FindByName(projectManagerUser.UserName);
+            userManager.AddToRole(currentUser.Id, RoleEnum.ProjectManager.ToString());
+
+            currentUser = userManager.FindByName(developerUser.UserName);
+            userManager.AddToRole(currentUser.Id, RoleEnum.Developer.ToString());
+
+            userManager.Create(adminUser, "1234567890");
+            currentUser = userManager.FindByName(adminUser.UserName);
+            //userManager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" })
+            userManager.AddToRole(currentUser.Id, RoleEnum.Admin.ToString());
 
             context.SaveChanges();
 

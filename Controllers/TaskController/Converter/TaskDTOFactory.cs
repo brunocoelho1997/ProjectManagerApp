@@ -17,7 +17,7 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
             taskDTO.Description = task.Description;
             taskDTO.DateLimit = task.DateLimit;
             taskDTO.State = task.State;
-            taskDTO.ApplicationUserId = task.applicationUser.Id;
+            taskDTO.ApplicationUserId = task.DeveloperEntity.Id;
             taskDTO.ProjectId = task.project.ProjectId;
             return taskDTO;
         }

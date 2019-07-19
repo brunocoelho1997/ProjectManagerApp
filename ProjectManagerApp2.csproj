@@ -183,6 +183,14 @@
     <Compile Include="Migrations\201907181621409_taskChanged.Designer.cs">
       <DependentUpon>201907181621409_taskChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907191449051_addedUsers.cs" />
+    <Compile Include="Migrations\201907191449051_addedUsers.Designer.cs">
+      <DependentUpon>201907191449051_addedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907191457191_addedUsers2.cs" />
+    <Compile Include="Migrations\201907191457191_addedUsers2.Designer.cs">
+      <DependentUpon>201907191457191_addedUsers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -203,8 +211,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\DeveloperEntity.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Controllers\ProjectController\DTO\ProjectDTO.cs" />
+    <Compile Include="Models\ProjectManagerEntity.cs" />
     <Compile Include="Models\RoleEnum.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Controllers\TaskController\DTO\TaskDTO.cs" />
@@ -237,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907181621409_taskChanged.resx">
       <DependentUpon>201907181621409_taskChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907191449051_addedUsers.resx">
+      <DependentUpon>201907191449051_addedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907191457191_addedUsers2.resx">
+      <DependentUpon>201907191457191_addedUsers2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
