@@ -61,7 +61,6 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Net.Http.
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Http.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.Http.WebHost.xml
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csprojAssemblyReference.cache
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csproj.CoreCompileInputs.cache
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csproj.CopyComplete
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.dll

@@ -174,7 +174,6 @@
     <Compile Include="Controllers\AccountsController\Converter\UserDTOFactory.cs" />
     <Compile Include="Controllers\AccountsController\DTO\CreateUserDTO.cs" />
     <Compile Include="Controllers\AccountsController\DTO\UserDTO.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RolesController\Converter\RoleDTOFactory.cs" />
     <Compile Include="Controllers\RolesController\DTO\CreateRoleBindingDTO.cs" />
     <Compile Include="Controllers\RolesController\DTO\RoleReturnDTO.cs" />

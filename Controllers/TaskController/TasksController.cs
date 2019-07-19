@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace ProjectManagerApp2.Controllers
 {
@@ -75,37 +77,46 @@ namespace ProjectManagerApp2.Controllers
 
         [Authorize(Roles = "ProjectManager")]
         [HttpPost]
-        public IHttpActionResult addTask(JObject jsonResult)
+        public async Task<IHttpActionResult> CreateTask(TaskDTO taskDTO)
         {
             try
             {
-                TaskDTO item = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-                db.Tasks.Add(TaskDTOFactory.taskDTOToTask(item));
+                var task = TaskDTOFactory.taskDTOToTask(taskDTO);
+
+                db.Tasks.Add(task);
+
                 db.SaveChanges();
 
-                return Ok(jsonResult);
-            }
-            catch (Exception)
+                return Ok(TaskDTOFactory.taskToTaskDTO(task));
+
+            }catch (Exception e)
             {
                 //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return throwErrorMessage("error message");
+                return throwErrorMessage("error message: " + e);
             }
+
+
         }
+
         [Authorize(Roles = "ProjectManager")]
         [HttpPut]
-        public IHttpActionResult editTask(JObject jsonResult)
+        public async Task<IHttpActionResult> EditTask(TaskDTO taskDTO)
         {
             try
             {
-                TaskDTO taskDTO = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
+                //TaskDTO taskDTO = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
 
                 if (isInvalidTask(taskDTO))
                 {
                     throwErrorMessage("Task not found.");
                 }
 
-                Task task = db.Tasks.Find(taskDTO.TaskId);
+                Models.Task task = db.Tasks.Find(taskDTO.TaskId);
                 task.Name = taskDTO.Name;
                 task.State = taskDTO.State;
                 task.DateLimit = taskDTO.DateLimit;
@@ -113,7 +124,7 @@ namespace ProjectManagerApp2.Controllers
                 
                 db.SaveChanges();
 
-                return Ok(jsonResult);
+                return Ok(task);
             }
             catch (Exception)
             {
@@ -121,6 +132,7 @@ namespace ProjectManagerApp2.Controllers
                 return throwErrorMessage("Error Message");
             }
         }
+        
 
         private bool isInvalidTask(TaskDTO taskDTO)
         {
@@ -133,22 +145,22 @@ namespace ProjectManagerApp2.Controllers
         {
             try
             {
-                Task task = db.Tasks.Find(taskId);
+                Models.Task task = db.Tasks.Find(taskId);
                 db.Tasks.Remove(task);
                 db.SaveChanges();
 
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
-                return throwErrorMessage("Error Message");
+                return throwErrorMessage("Error Message: " + e);
             }
         }
 
         [Authorize(Roles = "Developer")]
         [HttpPut]
-        public IHttpActionResult setTaskAsDone(JObject jsonResult)
+        public async Task<IHttpActionResult> SetTaskAsDone(TaskDTO taskDTO)
         {
             try
             {
@@ -156,9 +168,9 @@ namespace ProjectManagerApp2.Controllers
                 //RequestContext.Principal.Identity.Name; //get actual user which called the method
 
 
-                TaskDTO taskDTO = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
+                //TaskDTO taskDTO = JsonConvert.DeserializeObject<TaskDTO>(jsonResult.ToString());
 
-                if (taskDTO.TaskId == 0 || taskDTO.State == null)
+                if (taskDTO.TaskId == 0)
                     return NotFound();
                 
 
@@ -180,5 +192,6 @@ namespace ProjectManagerApp2.Controllers
                 return throwErrorMessage("Error Message");
             }
         }
+        
     }
 }
