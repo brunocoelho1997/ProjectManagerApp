@@ -74,6 +74,44 @@ namespace ProjectManagerApp2.Controllers
                 return InternalServerError();
             }
         }
+
+        //will load all entities!!! Does not convert to DTO 
+        [HttpGet]
+        public IHttpActionResult FindAllEntities()
+        {
+            try
+            {
+
+                //Prepare data to be returned using Linq as follows  
+
+                var projects = from project in db.Projects
+                               select new
+                               {
+                                   project.ProjectId,
+                                   project.Name,
+                                   project.Budget,
+                                   project.ProjectManagerEntity,
+                                   Task = from task in db.Tasks
+                                                   where task.project.ProjectId == project.ProjectId
+                                                   select new
+                                                   {
+                                                       task.TaskId,
+                                                       task.Name,
+                                                       task.Description,
+                                                       task.State
+                                                   }
+                                                   
+                               };
+
+                return Ok(projects);
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return InternalServerError();
+            }
+        }
+
         [HttpGet]
         public IHttpActionResult findById(int projectId)
         {
