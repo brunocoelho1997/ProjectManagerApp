@@ -74,6 +74,46 @@ namespace ProjectManagerApp2.Controllers
                 return InternalServerError();
             }
         }
+        [HttpGet]
+        public IHttpActionResult findById(int projectId)
+        {
+            try
+            {
+                //Prepare data to be returned using Linq as follows  
+                var result = from project in db.Projects
+                             where project.ProjectId == projectId
+                             select new ProjectDTO
+                             {
+                                 ProjectId = project.ProjectId,
+                                 Name = project.Name,
+                                 Budget = project.Budget,
+                                 UserDTO = new AccountsController.DTO.UserDTO
+                                 {
+                                     UserName = project.ProjectManagerEntity.UserName,
+                                     Id = project.ProjectManagerEntity.Id,
+                                     Email = project.ProjectManagerEntity.Email
+                                 },
+                                 TasksDTO = (from task in db.Tasks
+                                             where task.project.ProjectId == project.ProjectId
+                                             select new TaskDTO
+                                             {
+                                                 TaskId = task.TaskId,
+                                                 Name = task.Name,
+                                                 Description = task.Description,
+                                                 State = task.State,
+                                                 DateLimit = task.DateLimit
+
+                                             }).ToList()
+                             };
+
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                return InternalServerError();
+            }
+        }
 
         [Authorize(Roles = "ProjectManager")]
         [HttpPost]
