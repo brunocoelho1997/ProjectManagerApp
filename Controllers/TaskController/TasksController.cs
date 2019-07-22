@@ -99,7 +99,6 @@ namespace ProjectManagerApp2.Controllers
 
                 var developerEntityTmp = (DeveloperEntity)this.db.Users.Find(taskDTO.ApplicationUserId);
 
-
                 if (developerEntityTmp == null)
                     return throwErrorMessage("Developer not found");
 
@@ -118,10 +117,6 @@ namespace ProjectManagerApp2.Controllers
                 projectTmp.Tasks.Add(task);
 
                 db.SaveChanges();
-
-
-                //developerEntityTmp.Tasks.Add(task);
-                //this.AppUserManager.Update(developerEntityTmp);
 
                 return Ok(TaskDTOFactory.taskToTaskDTO(task));
 

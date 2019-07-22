@@ -203,7 +203,7 @@ namespace ProjectManagerApp2.Controllers
                 {
                     Name = projectDTO.Name,
                     Budget = projectDTO.Budget,
-                    ProjectManagerEntity = projectManagerEntity
+                    ProjectManagerEntity = projectManagerEntity //THE DIFERENCE BETWEEN THE ADD PROJECT FROM ID
                 };
 
                 project = this.db.Projects.Add(project);

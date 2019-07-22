@@ -17,6 +17,9 @@ namespace ProjectManagerApp2.Models
         public int ProjectId { get; set; }
         public string ApplicationUserId { get; set; }
 
+        public ProjectDTO ProjectDTO{ get; set; }
+
+        public ApplicationUser DeveloperEntityDTO { get; set; }
 
         public override string ToString()
         {

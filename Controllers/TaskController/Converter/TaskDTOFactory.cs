@@ -19,6 +19,20 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
             taskDTO.State = task.State;
             taskDTO.ApplicationUserId = task.DeveloperEntity.Id;
             taskDTO.ProjectId = task.project.ProjectId;
+            taskDTO.DeveloperEntityDTO = new ApplicationUser
+            {
+                Id = task.DeveloperEntity.Id,
+                Email = task.DeveloperEntity.Email,
+                UserName = task.DeveloperEntity.UserName
+            };
+            taskDTO.ProjectDTO = new ProjectDTO
+            {
+                Name = task.project.Name,
+                Budget = task.project.Budget,
+                ProjectId = task.project.ProjectId
+
+            };
+
             return taskDTO;
         }
 
