@@ -92,14 +92,14 @@ namespace ProjectManagerApp2.Controllers
                                    project.Budget,
                                    project.ProjectManagerEntity,
                                    Task = from task in db.Tasks
-                                                   where task.project.ProjectId == project.ProjectId
-                                                   select new
-                                                   {
-                                                       task.TaskId,
-                                                       task.Name,
-                                                       task.Description,
-                                                       task.State
-                                                   }
+                                        where task.project.ProjectId == project.ProjectId
+                                        select new
+                                        {
+                                            task.TaskId,
+                                            task.Name,
+                                            task.Description,
+                                            task.State
+                                        }
                                                    
                                };
 

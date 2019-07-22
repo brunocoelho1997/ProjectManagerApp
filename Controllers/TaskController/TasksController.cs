@@ -90,45 +90,38 @@ namespace ProjectManagerApp2.Controllers
                     return BadRequest(ModelState);
                 }
 
+                var projectTmp = this.db.Projects.Find(taskDTO.ProjectId);
+
+                if (projectTmp == null)
+                    return throwErrorMessage("Project not found");
+
+                //var developerEntityTmp = (DeveloperEntity)this.AppUserManager.FindById(taskDTO.ApplicationUserId);
+
+                var developerEntityTmp = (DeveloperEntity)this.db.Users.Find(taskDTO.ApplicationUserId);
+
+
+                if (developerEntityTmp == null)
+                    return throwErrorMessage("Developer not found");
+
                 var task = new Models.Task
                 {
                     Name = taskDTO.Name,
                     Description = taskDTO.Description,
                     DateLimit = taskDTO.DateLimit,
                     State = taskDTO.State,
-                    //project = this.db.Projects.Find(taskDTO.ProjectId),
-                    //DeveloperEntity = (DeveloperEntity) this.AppUserManager.FindById(taskDTO.ApplicationUserId)
+                    //project = projectTmp,
+                    DeveloperEntity = developerEntityTmp
                 };
 
                 //db.Tasks.Add(task);
 
-                /*
-                var project = (from projectQ in db.Projects
-                              where projectQ.ProjectId == taskDTO.ProjectId
-                               select new Task(
-                               {
-                                   
-                                   projectQ.ProjectId,
-                                   projectQ.Name,
-                                   projectQ.Budget,
-
-                                   Task = from taskQ in db.Tasks
-                                          where taskQ.project.ProjectId == projectQ.ProjectId
-                                          select new
-                                          {
-                                              taskQ.TaskId,
-                                              taskQ.Name,
-                                              taskQ.Description,
-                                              taskQ.State
-                                          }
-
-                               }).ToList().First();
-*/
-
-                //Project project = (Project)projectTmp;
-                //project.Tasks.Add(task);
+                projectTmp.Tasks.Add(task);
 
                 db.SaveChanges();
+
+
+                //developerEntityTmp.Tasks.Add(task);
+                //this.AppUserManager.Update(developerEntityTmp);
 
                 return Ok(TaskDTOFactory.taskToTaskDTO(task));
 
