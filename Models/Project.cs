@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,8 +19,9 @@ namespace ProjectManagerApp2.Models
 
         public virtual ICollection<Task> Tasks { get; set; }
 
-
         public string ProjectManagerEntityId { get; set; }
+        [JsonIgnore]
+        public ProjectManagerEntity ProjectManagerEntity { get; set; }
 
 
     }

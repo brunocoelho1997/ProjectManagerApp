@@ -77,7 +77,7 @@ namespace ProjectManagerApp2.Controllers
 
         [Authorize(Roles = "ProjectManager")]
         [HttpPost]
-        public async Task<IHttpActionResult> AddProject(ProjectDTO projectDTO)
+        public async Task<IHttpActionResult> AddProjectFromId(ProjectDTO projectDTO)
         {
             try
             {
@@ -108,6 +108,40 @@ namespace ProjectManagerApp2.Controllers
                 return throwErrorMessage("error message");
             }
         }
+        
+        [Authorize(Roles = "ProjectManager")]
+        [HttpPost]
+        public async Task<IHttpActionResult> AddProjectFromObject(ProjectDTO projectDTO)
+        {
+            try
+            {
+                string nameOfCurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
 
+                ApplicationUser tmp = this.db.Users.Where(x => x.UserName == nameOfCurrentUser).First();
+
+                ProjectManagerEntity projectManagerEntity = (ProjectManagerEntity)tmp;
+
+                Project project = new Project()
+                {
+                    Name = projectDTO.Name,
+                    Budget = projectDTO.Budget,
+                    ProjectManagerEntity = projectManagerEntity
+                };
+
+                project = this.db.Projects.Add(project);
+
+                this.db.SaveChanges();
+
+                return Ok(project);
+            }
+            catch (Exception e)
+            {
+                Console.Write("" + e.Message);
+
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned 
+                return throwErrorMessage("error message");
+            }
+        }
+        
     }
 }
