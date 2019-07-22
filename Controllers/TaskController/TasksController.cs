@@ -38,7 +38,8 @@ namespace ProjectManagerApp2.Controllers
                                  Description= task.Description,
                                  State = task.State,
                                  DateLimit = task.DateLimit,
-                                 ProjectId = task.project.ProjectId
+                                 ProjectId = task.project.ProjectId,
+                                 ApplicationUserId = task.DeveloperEntity.Id
                              };
 
                 return Ok(result);
@@ -65,7 +66,8 @@ namespace ProjectManagerApp2.Controllers
                                  Description = task.Description,
                                  State = task.State,
                                  DateLimit = task.DateLimit,
-                                 ProjectId = task.project.ProjectId
+                                 ProjectId = task.project.ProjectId,
+                                 ApplicationUserId = task.DeveloperEntity.Id
                              };
 
                 return Ok(result);
@@ -94,11 +96,37 @@ namespace ProjectManagerApp2.Controllers
                     Description = taskDTO.Description,
                     DateLimit = taskDTO.DateLimit,
                     State = taskDTO.State,
-                    project = this.db.Projects.Find(taskDTO.ProjectId),
-                    DeveloperEntity = (DeveloperEntity) this.AppUserManager.FindById(taskDTO.ApplicationUserId)
+                    //project = this.db.Projects.Find(taskDTO.ProjectId),
+                    //DeveloperEntity = (DeveloperEntity) this.AppUserManager.FindById(taskDTO.ApplicationUserId)
                 };
 
-                db.Tasks.Add(task);
+                //db.Tasks.Add(task);
+
+                /*
+                var project = (from projectQ in db.Projects
+                              where projectQ.ProjectId == taskDTO.ProjectId
+                               select new Task(
+                               {
+                                   
+                                   projectQ.ProjectId,
+                                   projectQ.Name,
+                                   projectQ.Budget,
+
+                                   Task = from taskQ in db.Tasks
+                                          where taskQ.project.ProjectId == projectQ.ProjectId
+                                          select new
+                                          {
+                                              taskQ.TaskId,
+                                              taskQ.Name,
+                                              taskQ.Description,
+                                              taskQ.State
+                                          }
+
+                               }).ToList().First();
+*/
+
+                //Project project = (Project)projectTmp;
+                //project.Tasks.Add(task);
 
                 db.SaveChanges();
 

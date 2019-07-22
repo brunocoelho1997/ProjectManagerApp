@@ -16,9 +16,10 @@ namespace ProjectManagerApp2.Models
         public string Name { get; set; }
         public double Budget { get; set; }
 
-        public List<Task> Tasks { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
 
-        public ProjectManagerEntity ProjectManagerEntity { get; set; }
+
+        public string ProjectManagerEntityId { get; set; }
 
 
     }

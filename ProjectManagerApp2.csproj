@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201907191457191_addedUsers2.Designer.cs">
       <DependentUpon>201907191457191_addedUsers2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907221033473_changedList.cs" />
+    <Compile Include="Migrations\201907221033473_changedList.Designer.cs">
+      <DependentUpon>201907221033473_changedList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -253,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907191457191_addedUsers2.resx">
       <DependentUpon>201907191457191_addedUsers2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907221033473_changedList.resx">
+      <DependentUpon>201907221033473_changedList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

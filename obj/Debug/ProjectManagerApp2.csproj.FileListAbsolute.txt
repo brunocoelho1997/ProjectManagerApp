@@ -120,3 +120,4 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\bin\System.Web.WebPa
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.csprojAssemblyReference.cache
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.addedUsers.resources
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.addedUsers2.resources
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.changedList.resources

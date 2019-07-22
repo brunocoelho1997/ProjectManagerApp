@@ -8,6 +8,7 @@ namespace ProjectManagerApp2.Migrations
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Diagnostics;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ProjectManagerApp2.Context.DatabaseContext>
@@ -18,6 +19,7 @@ namespace ProjectManagerApp2.Migrations
             ContextKey = "ProjectManagerApp2.Context.DatabaseContext";
         }
 
+        /*
         protected override void Seed(ProjectManagerApp2.Context.DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
@@ -92,6 +94,77 @@ namespace ProjectManagerApp2.Migrations
             userManager.AddToRole(currentUser.Id, RoleEnum.Admin.ToString());
 
             context.SaveChanges();
+
+        }
+        */
+
+        protected override void Seed(ProjectManagerApp2.Context.DatabaseContext context)
+        {
+
+            try
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new DatabaseContext()));
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new DatabaseContext()));
+
+
+                //add roles
+                string[] roles = new string[] { RoleEnum.ProjectManager.ToString(), RoleEnum.Developer.ToString(), RoleEnum.Admin.ToString() };
+                foreach (var roleName in roles)
+                {
+                    IdentityResult roleResult;
+                    // Check to see if Role Exists, if not create it
+                    if (!roleManager.RoleExists(roleName))
+                    {
+                        roleResult = roleManager.Create(new IdentityRole(roleName));
+                    }
+                }
+
+                //add users
+                var projectManagerUser = new ProjectManagerEntity()
+                {
+                    UserName = "projectmanager",
+                    Email = "projectmanager@mymail.com",
+                    EmailConfirmed = true,
+                    FullName = "Project Manager"
+                };
+
+                var developerUser = new DeveloperEntity()
+                {
+                    UserName = "developer",
+                    Email = "developer@mymail.com",
+                    EmailConfirmed = true,
+                    FullName = "Developer User"
+                };
+
+                var adminUser = new ApplicationUser()
+                {
+                    UserName = "admin",
+                    Email = "admin@mymail.com",
+                    EmailConfirmed = true,
+                    FullName = "Admin User"
+                };
+
+                userManager.Create(projectManagerUser, "1234567890");
+                ProjectManagerEntity projectManagerEntity = (ProjectManagerEntity)userManager.FindByName(projectManagerUser.UserName);
+
+                userManager.Create(developerUser, "1234567890");
+                DeveloperEntity developerEntity = (DeveloperEntity)userManager.FindByName(developerUser.UserName);
+
+                userManager.Create(adminUser, "1234567890");
+                ApplicationUser admin = userManager.FindByName(adminUser.UserName);
+
+                userManager.AddToRole(projectManagerEntity.Id, RoleEnum.ProjectManager.ToString());
+                userManager.AddToRole(developerEntity.Id, RoleEnum.Developer.ToString());
+                userManager.AddToRole(adminUser.Id, RoleEnum.Admin.ToString());
+
+                context.SaveChanges();
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.Write("" + e);
+            }
 
         }
     }

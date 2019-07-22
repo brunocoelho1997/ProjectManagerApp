@@ -22,7 +22,7 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
             return taskDTO;
         }
 
-        public static List<TaskDTO> getTasksDTOList(List<Task> listOfTask)
+        public static List<TaskDTO> getTasksDTOList(ICollection<Task> listOfTask)
         {
             List<TaskDTO> taskDTOs = new List<TaskDTO>();
 

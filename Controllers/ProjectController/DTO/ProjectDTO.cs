@@ -11,5 +11,6 @@ namespace ProjectManagerApp2.Models
         public string Name { get; set; }
         public double Budget { get; set; }
         public List<TaskDTO> TasksDTO { get; set; }
+
     }
 }

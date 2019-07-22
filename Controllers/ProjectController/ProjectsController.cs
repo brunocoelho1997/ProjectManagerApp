@@ -6,6 +6,7 @@ using ProjectManagerApp2.Controllers.TaskController.Converter;
 using ProjectManagerApp2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -74,28 +75,39 @@ namespace ProjectManagerApp2.Controllers
             }
         }
 
-        [Authorize(Roles = "Developer")]
+        [Authorize(Roles = "ProjectManager")]
         [HttpPost]
-        public async Task<IHttpActionResult> AddProject(ProjectDTO item)
+        public async Task<IHttpActionResult> AddProject(ProjectDTO projectDTO)
         {
             try
             {
-                //ProjectDTO item = JsonConvert.DeserializeObject<ProjectDTO>(jsonResult.ToString());
+                string nameOfCurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
 
-                /*
-                var project = db.Projects.Add(ProjectDTOFactory.projectDTOToProject(item));
-    */            
-    db.SaveChanges();
+                ApplicationUser tmp = this.db.Users.Where(x => x.UserName == nameOfCurrentUser).First();
 
-                //return Ok(ProjectDTOFactory.projectToProjectDTO(project));
+                ProjectManagerEntity projectManagerEntity = (ProjectManagerEntity)tmp;
 
-                return Ok();
+                Project project = new Project()
+                {
+                    Name = projectDTO.Name,
+                    Budget = projectDTO.Budget,
+                    ProjectManagerEntityId = projectManagerEntity.Id
+                };
+
+                project = this.db.Projects.Add(project);
+
+                this.db.SaveChanges();
+
+                return Ok(project);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned  
+                Console.Write("" + e.Message);
+
+                //If any exception occurs Internal Server Error i.e. Status Code 500 will be returned 
                 return throwErrorMessage("error message");
             }
         }
+
     }
 }

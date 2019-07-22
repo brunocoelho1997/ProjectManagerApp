@@ -7,6 +7,6 @@ namespace ProjectManagerApp2.Models
 {
     public class DeveloperEntity : ApplicationUser
     {
-        public List<Task> Tasks { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ProjectManagerApp2.Models
 {
     public class ProjectManagerEntity : ApplicationUser
     {
-        public List<Project> Projects{ get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
 
     }
 }
