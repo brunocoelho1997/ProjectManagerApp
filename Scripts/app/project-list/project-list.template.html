@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <p>
+                    Search:
+                    <input ng-model="$ctrl.query">
+                </p>
+
+                <p>
+                    Sort by:
+                    <select ng-model="$ctrl.orderProp">
+                        <option value="name">Alphabetical</option>
+                        <option value="age">Newest</option>
+                    </select>
+                </p>
+
+            </div>
+            <div class="col-md-10">
+                <!--Body content-->
+
+                <ul class="projects">
+                    <li ng-repeat="project in $ctrl.projects | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+                        <p>Name: {{project.name}}</p>
+                        <p>Snippet: {{project.snippet}}</p>
+                        <p>Age: {{project.age}}</p>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<html ng-app="projectsManagerApp">
+<head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="/Scripts/app/lib/boostrap/css/bootstrap.css" />
+    <script src="/Scripts/app/lib/angular/angular.js"></script>
+
+    <script src="/Scripts/app/app.module.js"></script>
+    <script src="/Scripts/app/project-list/project-list.module.js"></script>
+    <script src="/Scripts/app/project-list/project-list.component.js"></script>
+
+
+</head>
+<body ng-controller="ProjectsListController">
+
+    <ul>
+        <li ng-repeat="project in projects">
+
+            <span>{{project.id}}</span>
+            <span>{{project.name}}</span>
+            <p>{{project.snippet}}</p>
+
+        </li>
+    </ul>
+
+    <hr />
+
+    <project-list></project-list>
+
+
+</body>
+</html>

@@ -165,6 +165,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\app.module.js" />
+    <Content Include="Scripts\app\lib\angular\angular-mocks.js" />
+    <Content Include="Scripts\app\lib\angular\angular.js" />
+    <Content Include="Scripts\app\lib\angular\angular.min.js" />
+    <Content Include="Scripts\app\index.html" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-grid.css" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap.css" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap.min.css" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.js" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\app\project-list\project-list.component.js" />
+    <Content Include="Scripts\app\project-list\project-list.module.js" />
+    <Content Include="Scripts\app\project-list\project-list.template.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +251,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Scripts\app\lib\angular\angular.min.js.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.js.map" />
+    <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -242,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\common\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
