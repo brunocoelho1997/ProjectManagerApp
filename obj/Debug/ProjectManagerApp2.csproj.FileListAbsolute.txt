@@ -121,3 +121,4 @@ C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectMan
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.addedUsers.resources
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.addedUsers2.resources
 C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.changedList.resources
+C:\Users\BrunoCoelho\VisualStudioProjects\ProjectManagerApp\obj\Debug\ProjectManagerApp2.Migrations.tasksDeveloper.resources

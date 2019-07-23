@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201907221033473_changedList.Designer.cs">
       <DependentUpon>201907221033473_changedList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907221435366_tasksDeveloper.cs" />
+    <Compile Include="Migrations\201907221435366_tasksDeveloper.Designer.cs">
+      <DependentUpon>201907221435366_tasksDeveloper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907221033473_changedList.resx">
       <DependentUpon>201907221033473_changedList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907221435366_tasksDeveloper.resx">
+      <DependentUpon>201907221435366_tasksDeveloper.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

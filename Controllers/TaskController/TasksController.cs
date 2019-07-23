@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectManagerApp2.Context;
+using ProjectManagerApp2.Controllers.ProjectController.Converter;
 using ProjectManagerApp2.Controllers.TaskController.Converter;
 using ProjectManagerApp2.Models;
 using System;
@@ -39,7 +40,14 @@ namespace ProjectManagerApp2.Controllers
                                  State = task.State,
                                  DateLimit = task.DateLimit,
                                  ProjectId = task.project.ProjectId,
-                                 ApplicationUserId = task.DeveloperEntity.Id
+                                 ApplicationUserId = task.DeveloperEntity.Id,
+                                 ProjectDTO = new ProjectDTO
+                                 {
+                                     ProjectId = task.project.ProjectId,
+                                     Name = task.project.Name,
+                                     Budget = task.project.Budget
+                                 }
+
                              };
 
                 return Ok(result);
@@ -198,15 +206,13 @@ namespace ProjectManagerApp2.Controllers
 
                 if (taskDTO.TaskId == 0)
                     return NotFound();
-                
 
                 var task = db.Tasks.Find(taskDTO.TaskId);
 
-                if(task == null)
+                if (task == null)
                     return NotFound();
 
                 //if(task.) //TODO: verify if the task belongs to the user which defined as done
-
                 task.State = taskDTO.State;
                 db.SaveChanges();
 
