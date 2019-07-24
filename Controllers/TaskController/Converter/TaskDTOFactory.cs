@@ -24,7 +24,7 @@ namespace ProjectManagerApp2.Controllers.TaskController.Converter
                 taskDTO.ProjectId = task.project.ProjectId;
 
             if (task.DeveloperEntity != null)
-                taskDTO.DeveloperEntityDTO = new ApplicationUser
+                taskDTO.DeveloperEntityDTO = new AccountsController.DTO.UserDTO
                 {
                     Id = task.DeveloperEntity.Id,
                     Email = task.DeveloperEntity.Email,

@@ -165,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\app.config.js" />
+    <Content Include="Scripts\app\lib\angular-route\angular-route.js" />
+    <Content Include="Scripts\app\lib\angular-route\angular-route.min.js" />
     <Content Include="Scripts\app\app.module.js" />
     <Content Include="Scripts\app\lib\angular\angular-mocks.js" />
     <Content Include="Scripts\app\lib\angular\angular.js" />
@@ -180,6 +183,9 @@
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.min.js" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.js" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\app\project-detail\project-detail.component.js" />
+    <Content Include="Scripts\app\project-detail\project-detail.module.js" />
+    <Content Include="Scripts\app\project-detail\project-detail.template.html" />
     <Content Include="Scripts\app\project-list\project-list.component.js" />
     <Content Include="Scripts\app\project-list\project-list.module.js" />
     <Content Include="Scripts\app\project-list\project-list.template.html" />
@@ -262,6 +268,8 @@
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.js.map" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js.map" />
+    <Content Include="Scripts\app\local-data\projects.json" />
+    <Content Include="Scripts\app\lib\angular-route\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

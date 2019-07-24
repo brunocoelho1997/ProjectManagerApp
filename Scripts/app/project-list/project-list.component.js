@@ -1,8 +1,12 @@
 ﻿angular.
-    module('projectList').
+    module('projectListModule').
     component('projectList', {  // This name is what AngularJS uses to match to the `<phone-list>` element.
         templateUrl: 'project-list/project-list.template.html',
-        controller: function ProjectListController() {
+        controller: function ProjectListController($http) {
+            var self = this;
+            this.orderProp = 'age';
+
+            /*
             this.projects = [
                 {
                     id: 1,
@@ -21,8 +25,13 @@
                     age: 3
                 }
             ];
+            */
 
-            this.orderProp = 'age';
+            $http.get('local-data/projects.json').then(function (response) {
+                self.projects = response.data;
+            });
+
+            console.log("Hello world!");
 
 
         }

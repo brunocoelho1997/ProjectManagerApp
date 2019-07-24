@@ -31,7 +31,7 @@ namespace ProjectManagerApp2.Controllers
             try
             {
                 //Prepare data to be returned using Linq as follows  
-                var result = from task in db.Tasks 
+                /*var result = from task in db.Tasks 
                              select new TaskDTO
                              {
                                  TaskId = task.TaskId,
@@ -49,6 +49,32 @@ namespace ProjectManagerApp2.Controllers
                                  }
 
                              };
+
+                             */
+
+                List<TaskDTO> result = db.Tasks.Select(task => new TaskDTO
+                {
+                    TaskId = task.TaskId,
+                    Name = task.Name,
+                    Description = task.Description,
+                    State = task.State,
+                    DateLimit = task.DateLimit,
+                    ProjectId = task.project.ProjectId,
+                    ApplicationUserId = task.DeveloperEntity.Id,
+                    ProjectDTO = new ProjectDTO
+                    {
+                        ProjectId = task.project.ProjectId,
+                        Name = task.project.Name,
+                        Budget = task.project.Budget
+                    },
+                    DeveloperEntityDTO = new AccountsController.DTO.UserDTO
+                    {
+                        Id = task.DeveloperEntity.Id,
+                        Email = task.DeveloperEntity.Email,
+                        FullName = task.DeveloperEntity.FullName,
+                        UserName = task.DeveloperEntity.UserName
+                    }
+                }).ToList();
 
                 return Ok(result);
             }
