@@ -29,10 +29,10 @@
 
                 <ul class="projects">
                     <li ng-repeat="project in $ctrl.projects | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
-                        <a href="#!/local-data/{{project.id}}" class="thumb">
+                        <a href="#!/projects/{{project.id}}" class="thumb">
                             <img ng-src="{{project.imageUrl}}" alt="{{project.name}}" />
                         </a>
-                        <a href="#!/local-data/{{project.id}}">{{project.name}}</a>
+                        <a href="#!/projects/{{project.id}}">{{project.name}}</a>
                         <p>{{project.snippet}}</p>
                         <p>Age: {{project.age}}</p>
                     </li>

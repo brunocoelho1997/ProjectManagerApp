@@ -1,13 +1,13 @@
 ﻿angular.
-    module('projectDetailModule',[]).
-    component('projectDetail', {  // This name is what AngularJS uses to match to the `<phone-list>` element.
+    module('projectDetailModule').
+    component('projectDetail', {
         templateUrl: 'project-detail/project-detail.template.html',
         controller: ['$routeParams',
-            function ProjectDetailController($routeParams) {
+            function projectDetailController($routeParams) {
                 this.projectId = $routeParams.projectId;
 
 
-                console.log("Hello world!");
+                console.log("Goodby world!");
             }
         ]
     });

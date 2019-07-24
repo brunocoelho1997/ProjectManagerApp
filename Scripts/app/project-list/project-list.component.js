@@ -27,6 +27,8 @@
             ];
             */
 
+
+
             $http.get('local-data/projects.json').then(function (response) {
                 self.projects = response.data;
             });

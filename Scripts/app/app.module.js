@@ -2,10 +2,10 @@
 // Define the `phonecatApp` module
 var projectsManagerApp = angular.module('projectsManagerApp', [
             // ...which depends on the `projectList` module
+    'ngRoute',
     'projectListModule',
-    'projectDetailModule',
-    'ngRoute'
-        ]);
+    'projectDetailModule'
+    ]);
 
 // Define the `PhoneListController` controller on the `phonecatApp` module
 /*

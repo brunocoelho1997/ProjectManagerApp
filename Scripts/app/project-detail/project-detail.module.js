@@ -1,1 +1,3 @@
-﻿angular.module('projectDetailModule', []);
+﻿angular.module('projectDetailModule', [
+    'ngRoute'
+]);

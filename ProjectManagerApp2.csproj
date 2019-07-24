@@ -183,8 +183,6 @@
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.bundle.min.js" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.js" />
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js" />
-    <Content Include="Scripts\app\project-detail\project-detail.component.js" />
-    <Content Include="Scripts\app\project-detail\project-detail.module.js" />
     <Content Include="Scripts\app\project-detail\project-detail.template.html" />
     <Content Include="Scripts\app\project-list\project-list.component.js" />
     <Content Include="Scripts\app\project-list\project-list.module.js" />
@@ -270,6 +268,27 @@
     <Content Include="Scripts\app\lib\boostrap\js\bootstrap.min.js.map" />
     <Content Include="Scripts\app\local-data\projects.json" />
     <Content Include="Scripts\app\lib\angular-route\angular-route.min.js.map" />
+    <Content Include="Scripts\app\local-data\dell-streak-7.json" />
+    <Content Include="Scripts\app\local-data\dell-venue.json" />
+    <Content Include="Scripts\app\local-data\droid-2-global-by-motorola.json" />
+    <Content Include="Scripts\app\local-data\droid-pro-by-motorola.json" />
+    <Content Include="Scripts\app\local-data\lg-axis.json" />
+    <Content Include="Scripts\app\local-data\motorola-atrix-4g.json" />
+    <Content Include="Scripts\app\local-data\motorola-bravo-with-motoblur.json" />
+    <Content Include="Scripts\app\local-data\motorola-charm-with-motoblur.json" />
+    <Content Include="Scripts\app\local-data\motorola-defy-with-motoblur.json" />
+    <Content Include="Scripts\app\local-data\motorola-xoom-with-wi-fi.json" />
+    <Content Include="Scripts\app\local-data\motorola-xoom.json" />
+    <Content Include="Scripts\app\local-data\nexus-s.json" />
+    <Content Include="Scripts\app\local-data\phones.json" />
+    <Content Include="Scripts\app\local-data\samsung-galaxy-tab.json" />
+    <Content Include="Scripts\app\local-data\samsung-gem.json" />
+    <Content Include="Scripts\app\local-data\samsung-mesmerize-a-galaxy-s-phone.json" />
+    <Content Include="Scripts\app\local-data\samsung-showcase-a-galaxy-s-phone.json" />
+    <Content Include="Scripts\app\local-data\samsung-transform.json" />
+    <Content Include="Scripts\app\local-data\sanyo-zio.json" />
+    <Content Include="Scripts\app\local-data\t-mobile-g2.json" />
+    <Content Include="Scripts\app\local-data\t-mobile-mytouch-4g.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
